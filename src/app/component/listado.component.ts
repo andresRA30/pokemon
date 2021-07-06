@@ -31,6 +31,7 @@ export class ListadoComponent implements OnInit {
 
   }
   buscarPokemons() {
+    this.pokemons = [];
     const { tipo } = this.miFormulario.value
 
     this.listadoService.listaPokemons(tipo)
