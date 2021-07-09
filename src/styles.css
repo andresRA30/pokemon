@@ -1,3 +1,11 @@
 h1 {
-  color: yellowgreen;
+  color: rgb(205, 219, 12);
+  -webkit-text-stroke: 2px black;
+}
+body {
+  background: rgb(233, 233, 241);
+}
+.card {
+  background: rgb(219, 215, 215);
+  border-radius: 40px;
 }

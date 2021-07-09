@@ -1,0 +1,44 @@
+<h1>Pokémons</h1>
+<div class="row mt-3">
+    <form autocomplete="off" [formGroup]="miFormulario">
+        <div class="col- col-md-2 col-sm-4">
+
+            <select (ngModelChange)="onChange($event)" formControlName="tipo" class="form-control cursor">
+                <option value="">Select type</option>
+                <option *ngFor="let pokemonType of pokemonTypes" value="{{pokemonType.name}}">
+                    {{pokemonType.name}}
+                </option>
+            </select>
+
+        </div>
+
+    </form>
+
+</div>
+<hr>
+<br>
+<div *ngIf="cargando" class="text-center">
+    <div class="spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+</div>
+<div *ngIf="!cargando" class="row  cursor ">
+
+    <div *ngFor="let pokemon of pokemons" class="col- col-md-4 col-sm-4 mt-3 animated fadeInDown">
+
+        <div (click)="infoPokemon(pokemon.species.name)" class="card " style="width: 18rem;">
+            <summary class="card ">
+                <img src="{{pokemon.sprites.front_default}}" class="card-img-top" alt="...">
+                <div class="card-body text-center">
+                    <h2>{{pokemon.species.name|titlecase}}</h2>
+
+                </div>
+            </summary>
+        </div>
+    </div>
+</div>
+<div *ngIf="this.miFormulario.controls['tipo'].value.length ===0" class="row">
+    <div class="col-md-12 mt-4 text-center">
+        <button (click)="cargarMas()" type="button" class="btn btn-outline-primary btn-lg btn-block">Load More</button>
+    </div>
+</div>
